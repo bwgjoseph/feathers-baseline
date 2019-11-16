@@ -1,0 +1,106 @@
+{
+  "name": "feathers-baseline",
+  "description": "feathers-baseline",
+  "version": "0.1.0",
+  "homepage": "https://feathers-baseline.com",
+  "main": "src",
+  "keywords": [
+    "feathers-baseline"
+  ],
+  "author": {
+    "name": "bwgjoseph",
+    "email": "josephgan@live.com.sg"
+  },
+  "contributors": [
+    {
+      "name": "bwgjoseph",
+      "email": "josephgan@live.com.sg"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bwgjoseph/feathers-baseline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bwgjoseph/feathers-baseline/issues"
+  },
+  "directories": {
+    "lib": "src",
+    "test": "test/",
+    "config": "config/"
+  },
+  "engines": {
+    "node": "^10.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "scripts": {
+    "test": "npm run compile && npm run eslint:html && npm run mocha",
+    "start": "npm run compile && node dist/",
+    "dev": "ts-node-dev --no-notify src/",
+    "debug": "ts-node-dev --inspect --respawn --no-notify --transpileOnly src/",
+    "mocha": "cross-env NODE_ENV=test nyc ts-mocha \"test/**/*.ts\" --recursive --exit",
+    "eslint": "eslint ./src/**/*.{ts,tsx}",
+    "eslint:html": "eslint ./src/**/*.{ts,tsx} -f html -o ./eslint/eslint.html",
+    "compile": "shx rm -rf dist/ && tsc",
+    "clean:pl": "shx rm -f package-lock.json",
+    "clean:eslint": "shx rm -rf eslint/",
+    "clean:coverage": "shx rm -rf coverage/ .nyc_output/",
+    "clean:dist": "shx rm -rf dist/",
+    "clean:nm": "shx rm -rf node_modules/",
+    "clean:all": "npm run clean:pl && npm run clean:eslint && npm run clean:coverage && npm run clean:dist && npm run clean:nm"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
+  },
+  "types": "lib/",
+  "dependencies": {
+    "@feathersjs/authentication": "^4.3.11",
+    "@feathersjs/authentication-local": "^4.3.11",
+    "@feathersjs/configuration": "^4.3.11",
+    "@feathersjs/errors": "^4.3.11",
+    "@feathersjs/express": "^4.3.11",
+    "@feathersjs/feathers": "^4.3.11",
+    "@feathersjs/socketio": "^4.3.11",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "feathers-mongoose": "^8.1.0",
+    "helmet": "^3.21.2",
+    "mongodb-core": "^3.2.7",
+    "mongoose": "^5.7.11",
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.0.1",
+    "@types/cors": "^2.8.6",
+    "@types/helmet": "0.0.45",
+    "@types/jsonwebtoken": "^8.3.5",
+    "@types/mocha": "^5.2.7",
+    "@types/mongoose": "^5.5.32",
+    "@types/serve-favicon": "^2.2.31",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
+    "axios": "^0.19.0",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-sonarjs": "^0.5.0",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "shx": "^0.3.2",
+    "ts-mocha": "^6.0.0",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.7.2"
+  }
+}
